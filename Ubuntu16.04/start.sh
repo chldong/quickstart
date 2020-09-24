@@ -121,7 +121,7 @@ echo
 }
 
 master(){
-rm -rf ./scm.log
+rm -rf ./chl.log
 host-name
 ssh-root
 apt-aliyun
@@ -134,7 +134,7 @@ echo "安装完成"
 }
 
 node(){
-rm -rf ./scm.log
+rm -rf ./chl.log
 host-name
 ssh-root
 apt-aliyun
@@ -142,6 +142,15 @@ apt-get-install
 nfs-common-install
 jdk8-install
 docker-install
+echo "安装完成"
+}
+
+nodocker(){
+rm -rf ./chl.log
+host-name
+ssh-root
+apt-aliyun
+apt-get-install
 echo "安装完成"
 }
 
@@ -155,8 +164,9 @@ function menu ()
 当前IP地址：
 $ip
 ----------------------------------------
-`echo -e "\033[35m 1)主节点基本环境安装\033[0m"`
-`echo -e "\033[35m 2)计算节点环境安装\033[0m"`
+`echo -e "\033[35m 1)中心节点环境安装\033[0m"`
+`echo -e "\033[35m 2)边缘节点环境安装\033[0m"`
+`echo -e "\033[35m 2)非容器化交付安装\033[0m"`
 `echo -e "\033[35m 3)退出\033[0m"`
 EOF
 read -p "请输入对应产品的数字：" num1
@@ -168,6 +178,9 @@ case $num1 in
   node
   ;;
  3)
+  nodocker
+  ;;
+ 4)
   exit 0
 esac
 }
